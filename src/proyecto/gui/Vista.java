@@ -22,7 +22,7 @@ public class Vista {
     }
 
     public void inicializarComponentes() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         jFrameVentana = new JFrame("Conversor - Challenge");
         jPanelSelectores = new JPanel();
         jLabelTitulo = new JLabel();
@@ -54,13 +54,15 @@ public class Vista {
         jPanelSelectores.setLayout(new GridLayout(3,1));
         jPanelDatoRes.setLayout(new GridLayout(2,2));
         jPanelSelectores.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
-        jPanelDatoRes.setBorder(BorderFactory.createEmptyBorder(5,12,5,12));
+        jPanelDatoRes.setBorder(BorderFactory.createEmptyBorder(5,15,5,15));
         jLabelTitulo.setText("Conversor - Challenge ONE");
         jLabelTitulo.setFont(new Font("Arial", Font.BOLD,15));
         jLabelTitulo.setHorizontalAlignment(JTextField.CENTER);
         jLabelCantidad.setText("Ingresa una cantidad: ");
+        jLabelCantidad.setFont(new Font("Arial", Font.BOLD,13));
         jTextFieldCantidad.setHorizontalAlignment(4);
         jLabelResultado.setText("El resultado es: ");
+        jLabelResultado.setFont(new Font("Arial", Font.BOLD,13));
         jTextFieldResultado.setHorizontalAlignment(4);
         jTextFieldResultado.setEnabled(false);
         jTextFieldResultado.setDisabledTextColor(Color.BLACK);
