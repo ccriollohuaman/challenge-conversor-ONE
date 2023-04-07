@@ -1,9 +1,7 @@
 package proyecto.gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import javax.swing.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EventListener;
@@ -42,6 +40,24 @@ public class Controlador implements ActionListener, WindowListener, EventListene
         vista.jComboBoxTConversor.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 jComboBoxConversorPerformed(e);
+            }
+        });
+
+        vista.jComboBoxTConversor.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getButton() == 1){
+                    vista.jComboBoxTConversor.setModel(new DefaultComboBoxModel<>(new Object[]{"Conversor de moneda", "Conversor de temperatura"}));
+                    vista.jComboBoxTConversor.setPopupVisible(true);
+                }
+            }
+        });
+
+        vista.jTextFieldCantidad.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode()==KeyEvent.VK_ENTER)
+                    convertir();
             }
         });
     }
