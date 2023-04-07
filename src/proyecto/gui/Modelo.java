@@ -29,22 +29,28 @@ public class Modelo {
         for (Pares paresMedida : paresMedidas) {
             if (Objects.equals(paresMedida.getNombre(), opcionElegida) && Objects.equals(paresMedida.getNombre(), "De Celcius a Kelvin")) {
                 double celciusKelvin = cantidad + paresMedida.getCambioMedida();
-                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + celciusKelvin + " " +paresMedida.getPasarPara();
+                BigDecimal dosDecimalesCK = new BigDecimal(celciusKelvin).setScale(2, RoundingMode.HALF_UP);
+                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + dosDecimalesCK + " " +paresMedida.getPasarPara();
             } else if (Objects.equals(paresMedida.getNombre(), opcionElegida) && Objects.equals(paresMedida.getNombre(), "De Celcius a Fahrenheit")) {
                 double celciusFahrenheit = (cantidad * 9 / 5) + paresMedida.getCambioMedida();
-                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + celciusFahrenheit + " " +paresMedida.getPasarPara();
+                BigDecimal dosDecimalesCF = new BigDecimal(celciusFahrenheit).setScale(2, RoundingMode.HALF_UP);
+                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + dosDecimalesCF + " " +paresMedida.getPasarPara();
             } else if (Objects.equals(paresMedida.getNombre(), opcionElegida) && Objects.equals(paresMedida.getNombre(), "De Kelvin a Celcius")) {
                 double kelvinCelcius = cantidad - paresMedida.getCambioMedida();
-                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + kelvinCelcius + " " +paresMedida.getPasarPara();
+                BigDecimal dosDecimalesKC = new BigDecimal(kelvinCelcius).setScale(2, RoundingMode.HALF_UP);
+                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + dosDecimalesKC + " " +paresMedida.getPasarPara();
             } else if (Objects.equals(paresMedida.getNombre(), opcionElegida) && Objects.equals(paresMedida.getNombre(), "De Kelvin a Fahrenheit")) {
                 double kelvinFahrenheit = (cantidad - paresMedida.getCambioMedida()) * 9/5 + 32;
-                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + kelvinFahrenheit + " " +paresMedida.getPasarPara();
+                BigDecimal dosDecimalesKF = new BigDecimal(kelvinFahrenheit).setScale(2, RoundingMode.HALF_UP);
+                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + dosDecimalesKF + " " +paresMedida.getPasarPara();
             } else if (Objects.equals(paresMedida.getNombre(), opcionElegida) && Objects.equals(paresMedida.getNombre(), "De Fahrenheit a Celcius")) {
                 double fahrenheitCelcius = (cantidad - paresMedida.getCambioMedida()) * 5/9;
-                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + fahrenheitCelcius + " " +paresMedida.getPasarPara();
+                BigDecimal dosDecimalesFC = new BigDecimal(fahrenheitCelcius).setScale(2, RoundingMode.HALF_UP);
+                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + dosDecimalesFC + " " +paresMedida.getPasarPara();
             } else if (Objects.equals(paresMedida.getNombre(), opcionElegida) && Objects.equals(paresMedida.getNombre(), "De Fahrenheit a Kelvin")) {
                 double fahrenheitKelvin = (cantidad - paresMedida.getCambioMedida()) * 5/9 + 273.15;
-                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + fahrenheitKelvin + " " +paresMedida.getPasarPara();
+                BigDecimal dosDecimalesFK = new BigDecimal(fahrenheitKelvin).setScale(2, RoundingMode.HALF_UP);
+                resultado = cantidad + " " + paresMedida.getPasarDe() + " son " + dosDecimalesFK + " " +paresMedida.getPasarPara();
             }
         }
         return resultado;
