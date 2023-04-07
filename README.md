@@ -15,7 +15,7 @@ Este es un proyecto creado para cubrir la solicitud del [Challenge ONE Back End 
 ### Funcionamiento
 1. Para iniciar el programa se creó la clase Ejecutar que está en dentro del paquete proyecto.
 2. Al hacer RUN en la clase Ejecutar aparecerá la siguiente aplicación en el centro de la ventana principal del computador.
-   * La aplicación tiene 7 componentes visuales:
+  * La aplicación tiene 7 componentes visuales:
       * Título "Conversor - Challenge ONE"
       * ComboBox con los tipos de conversor "Elige un conversor"
       * ComboBox con las opciones para cada tipo de conversor "Opciones disponibles"
@@ -26,10 +26,10 @@ Este es un proyecto creado para cubrir la solicitud del [Challenge ONE Back End 
 5. Luego que el usuario tenga elegido el tipo de conversor y la opción de conversión deberá ingresar la cantidad a convertir en la caja con etiqueta "Ingrese una cantidad" y presionar "Enter" para que se muestre el resultado en la caja con etiqueta "Resultado". 
 
 ### Desarrollado en
-* IntelliJ IDEA
+* [IntelliJ IDEA](https://www.jetbrains.com/idea/download/)
 
 ### Lenguaje utilizado 
-* Java
+* [Java](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html)
 
 ### Desarrollador
 [<img src="https://avatars.githubusercontent.com/u/83378496?v=4" width=90><br><sub>Cristhian Criollo</sub>](https://github.com/ccriollohuaman)
