@@ -15,15 +15,25 @@ Este es un proyecto creado para cubrir la solicitud del [Challenge ONE Back End 
 ### Funcionamiento
 1. Para iniciar el programa se creó la clase Ejecutar que está en dentro del paquete proyecto.
 2. Al hacer RUN en la clase Ejecutar aparecerá la siguiente aplicación en el centro de la ventana principal del computador.
+
   * La aplicación tiene 7 componentes visuales:
       * Título "Conversor - Challenge ONE"
       * ComboBox con los tipos de conversor "Elige un conversor"
       * ComboBox con las opciones para cada tipo de conversor "Opciones disponibles"
-      * Una etiqueta de texto frente a una caja para recepcionar la cantidad que ingrese el usuario.
-      * Una segunda etiquera de texto frente a una caja donde se mostrará la conversión realizada.
+      * Una etiqueta de texto frente "Ingrese una cantidad" a una caja para recepcionar la cantidad que ingrese el usuario.
+      * Una segunda etiqueta de texto "Resultado" frente a otra caja donde se mostrará la conversión realizada.
+
+<p align="center"><img src="https://user-images.githubusercontent.com/83378496/230690853-67b5a875-ce7d-40b2-8e9b-3d8e85f2b04c.png" alt="Challenge-Pantalla-Inicial"></p>
+      
 3. Al cliquear el ComboBox "Elige un conversor" se desplegará los conversores disponibles, actualmente aparecería Conversor de moneda y Conversor de temperatura.
 4. De acuerdo al conversor elegido, al cliquear el ComboBox "Opciones disponibles" aparecerán los cruces que el usuario puede escoger para realizar la conversión. Por ejemplo: De Soles a Euros.  
 5. Luego que el usuario tenga elegido el tipo de conversor y la opción de conversión deberá ingresar la cantidad a convertir en la caja con etiqueta "Ingrese una cantidad" y presionar "Enter" para que se muestre el resultado en la caja con etiqueta "Resultado". 
+
+<div align="center"><video src="https://user-images.githubusercontent.com/83378496/230691240-fc35f236-ec89-4798-b7ad-ace329caf672.mp4"></div>
+
+6. Si el usuario ingresa un dato diferente a un número entero o decimal, el programa lanzará un pop up indicando "Solo se permite números"
+
+<p align="center"><img src="https://user-images.githubusercontent.com/83378496/230692145-24e1016c-a3b2-49d0-899c-60a9962624be.png" alt="Challenge-PopUP-Nonumeros"></p>
 
 ### Desarrollado en
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/download/)
