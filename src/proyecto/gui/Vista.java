@@ -58,10 +58,10 @@ public class Vista {
         jLabelTitulo.setText("Conversor - Challenge ONE");
         jLabelTitulo.setFont(new Font("Arial", Font.BOLD,15));
         jLabelTitulo.setHorizontalAlignment(JTextField.CENTER);
-        jLabelCantidad.setText("Ingresa una cantidad: ");
+        jLabelCantidad.setText("Ingrese una cantidad: ");
         jLabelCantidad.setFont(new Font("Arial", Font.BOLD,13));
         jTextFieldCantidad.setHorizontalAlignment(4);
-        jLabelResultado.setText("El resultado es: ");
+        jLabelResultado.setText("Resultado: ");
         jLabelResultado.setFont(new Font("Arial", Font.BOLD,13));
         jTextFieldResultado.setHorizontalAlignment(4);
         jTextFieldResultado.setEnabled(false);
