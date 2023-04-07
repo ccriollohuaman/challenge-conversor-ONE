@@ -66,6 +66,8 @@ public class Vista {
         jTextFieldResultado.setHorizontalAlignment(4);
         jTextFieldResultado.setEnabled(false);
         jTextFieldResultado.setDisabledTextColor(Color.BLACK);
+        jComboBoxTConversor.setModel(new DefaultComboBoxModel<>(new Object[]{"Elige un conversor"}));
+        jComboBoxOpciones.setModel(new DefaultComboBoxModel<>(new Object[]{"Opciones disponibles"}));
         contenedorSelectores.add(jPanelSelectores);
         contenedorDatoRes.add(jPanelDatoRes);
 
