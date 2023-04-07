@@ -2,10 +2,7 @@ package proyecto.gui;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EventListener;
-import java.util.List;
+import java.util.*;
 
 public class Controlador implements ActionListener, WindowListener, EventListener {
     private Vista vista;
@@ -29,13 +26,11 @@ public class Controlador implements ActionListener, WindowListener, EventListene
         if (vista.jComboBoxTConversor.getSelectedItem().equals("Conversor de moneda")){
             String resultadoMoneda = modelo.ConvertirMoneda((String) vista.jComboBoxOpciones.getSelectedItem(),vista.jTextFieldCantidad.getText());
             vista.jTextFieldResultado.setText(resultadoMoneda);
-        }else {
+        } else {
             String resultadoTemperatura = modelo.ConvertirTemperatura((String) vista.jComboBoxOpciones.getSelectedItem(),Double.parseDouble(vista.jTextFieldCantidad.getText()));
             vista.jTextFieldResultado.setText(resultadoTemperatura);
         }
-
     }
-
     public void listenersPersonalizados(){
         vista.jComboBoxTConversor.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -56,8 +51,14 @@ public class Controlador implements ActionListener, WindowListener, EventListene
         vista.jTextFieldCantidad.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode()==KeyEvent.VK_ENTER)
-                    convertir();
+                if (e.getKeyCode()==KeyEvent.VK_ENTER){
+                    boolean validacion = vista.jTextFieldCantidad.getText().matches("^[0-9]+([.])?([0-9]+)?$");
+                    if (validacion){
+                        convertir();
+                    }else{
+                        JOptionPane.showMessageDialog(vista.jFrameVentana,"Solo se permite números");
+                    }
+                }
             }
         });
     }
