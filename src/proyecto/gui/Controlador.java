@@ -5,8 +5,8 @@ import java.awt.event.*;
 import java.util.*;
 
 public class Controlador implements ActionListener, WindowListener, EventListener {
-    private Vista vista;
-    private Modelo modelo;
+    private final Vista vista;
+    private final Modelo modelo;
 
     private final List<Object> crucesMonedas = new ArrayList<>(Arrays.asList("De Soles a Dólares","De Dólares a Soles",
             "De Soles a Euros","De Euros a Soles","De Soles a Libras","De Libras a Soles","De Soles a Yenes","De Yenes a Soles",
@@ -23,7 +23,7 @@ public class Controlador implements ActionListener, WindowListener, EventListene
 
 
     public void convertir(){
-        if (vista.jComboBoxTConversor.getSelectedItem().equals("Conversor de moneda")){
+        if (Objects.equals(vista.jComboBoxTConversor.getSelectedItem(), "Conversor de moneda")){
             String resultadoMoneda = modelo.ConvertirMoneda((String) vista.jComboBoxOpciones.getSelectedItem(),vista.jTextFieldCantidad.getText());
             vista.jTextFieldResultado.setText(resultadoMoneda);
         } else {
@@ -31,19 +31,41 @@ public class Controlador implements ActionListener, WindowListener, EventListene
             vista.jTextFieldResultado.setText(resultadoTemperatura);
         }
     }
+
+    public void setearComboBox(){
+        vista.jComboBoxTConversor.setModel(new DefaultComboBoxModel<>(new Object[]{"Conversor de moneda", "Conversor de temperatura"}));
+        vista.jComboBoxTConversor.setPopupVisible(true);
+        vista.jTextFieldCantidad.setText(null);
+        vista.jTextFieldResultado.setText(null);
+    }
+
     public void listenersPersonalizados(){
-        vista.jComboBoxTConversor.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                jComboBoxConversorPerformed(e);
+
+        vista.jComboBoxTConversor.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (e.getID()==1004){
+                    setearComboBox();
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
             }
         });
 
-        vista.jComboBoxTConversor.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == 1){
-                    vista.jComboBoxTConversor.setModel(new DefaultComboBoxModel<>(new Object[]{"Conversor de moneda", "Conversor de temperatura"}));
-                    vista.jComboBoxTConversor.setPopupVisible(true);
+        vista.jComboBoxTConversor.addActionListener(e -> {
+
+            vista.jComboBoxOpciones.removeAllItems();
+            vista.jComboBoxOpciones.setEnabled(true);
+
+            if (Objects.equals(vista.jComboBoxTConversor.getSelectedItem(), "Conversor de moneda")){
+                for (Object cruceMoneda : crucesMonedas){
+                    vista.jComboBoxOpciones.addItem(cruceMoneda);
+                }
+            }else{
+                for (Object cruceMedida : crucesMedidas){
+                    vista.jComboBoxOpciones.addItem(cruceMedida);
                 }
             }
         });
@@ -52,29 +74,20 @@ public class Controlador implements ActionListener, WindowListener, EventListene
             @Override
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode()==KeyEvent.VK_ENTER){
+                    boolean validarConverSelec = vista.jComboBoxTConversor.getSelectedItem() == "Elige un conversor";
                     boolean validacion = vista.jTextFieldCantidad.getText().matches("^[0-9]+([.])?([0-9]+)?$");
-                    if (validacion){
+                    if (validarConverSelec){
+                        JOptionPane.showMessageDialog(vista.jFrameVentana,"Debes seleccionar un conversor");
+                    } else if (validacion) {
                         convertir();
-                    }else{
+                    } else{
                         JOptionPane.showMessageDialog(vista.jFrameVentana,"Solo se permite números");
+                        vista.jTextFieldCantidad.setText(null);
+                        vista.jTextFieldResultado.setText(null);
                     }
                 }
             }
         });
-    }
-
-    private void jComboBoxConversorPerformed(ActionEvent e) {
-        vista.jComboBoxOpciones.removeAllItems();
-
-        if (vista.jComboBoxTConversor.getSelectedItem().equals("Conversor de moneda")){
-            for (Object cruceMoneda : crucesMonedas){
-                vista.jComboBoxOpciones.addItem(cruceMoneda);
-            }
-        }else{
-            for (Object cruceMedida : crucesMedidas){
-                vista.jComboBoxOpciones.addItem(cruceMedida);
-            }
-        }
     }
 
     private void anadirWindowListeners(WindowListener listener){
@@ -94,7 +107,6 @@ public class Controlador implements ActionListener, WindowListener, EventListene
 
     @Override
     public void windowClosing(WindowEvent e) {
-
     }
 
     @Override
